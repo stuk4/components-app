@@ -52,12 +52,12 @@ export const uiMenuItems: MenuItem[] = [
   {
     name: "Switches",
     icon: "toggle-outline",
-    component: "SwitchScreen",
+    component: "/(ui)/switches",
   },
   {
     name: "Alerts",
     icon: "alert-circle-outline",
-    component: "AlertScreen",
+    component: "/(ui)/alerts",
   },
   {
     name: "TextInputs",

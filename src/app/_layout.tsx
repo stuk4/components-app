@@ -65,6 +65,8 @@ function RootLayoutNav() {
           name="(animations)/animations-102"
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="(ui)/switches" options={{ headerShown: false }} />
+        <Stack.Screen name="(ui)/alerts" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
