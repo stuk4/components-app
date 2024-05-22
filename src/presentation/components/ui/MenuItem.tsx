@@ -1,9 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { colors } from "../../../config/theme/theme";
+import React, { useContext } from "react";
+
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Separator } from "./Separator";
+import { ThemeContext } from "../../context/ThemeContext";
 interface Props {
   name: string;
   icon: keyof typeof Ionicons.glyphMap;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export const MenuItem = ({ name, icon, component, isFirst, isLast }: Props) => {
+  const { colors } = useContext(ThemeContext);
   return (
     <>
       <Pressable

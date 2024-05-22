@@ -1,9 +1,11 @@
 import { View, Text, Alert } from "react-native";
 import React from "react";
-import { CustomView } from "../ui/CustomView";
-import { Title } from "../ui/Title";
+import { CustomView } from "../../components/ui/CustomView";
+import { Title } from "../../components/ui/Title";
 import { globalStyles } from "../../../config/theme/theme";
-import { Button } from "../ui/Button";
+import { Button } from "../../components/ui/Button";
+import prompt from "react-native-prompt-android";
+import { showPrompt } from "../../../config/adapters/prompt.adapter";
 
 export const AlertScreen = () => {
   const createTwoButtonAlert = () =>
@@ -29,12 +31,29 @@ export const AlertScreen = () => {
       },
       { text: "OK", onPress: () => console.log("OK Pressed") },
     ]);
-  const showPrompt = () => {
-    Alert.prompt(
-      "Correo Electrónico",
-      "Ingrese su correo electrónico",
-      (text) => console.log(text)
-    );
+  const onShowPrompt = () => {
+    // Alert.prompt(
+    //   "Correo Electrónico",
+    //   "Ingrese su correo electrónico",
+    //   (text) => console.log(text)
+    // );
+    showPrompt({
+      title: "Correo Electrónico",
+      subTitle: "Ingrese su correo electrónico",
+      prompType: "plain-text",
+      placeholder: "Correo Electrónico",
+      buttons: [
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "destructive",
+        },
+        {
+          text: "Aceptar",
+          onPress: () => console.log("OK Pressed"),
+        },
+      ],
+    });
   };
 
   return (
@@ -44,7 +63,7 @@ export const AlertScreen = () => {
       <View style={{ height: 10 }} />
       <Button text="Alerta - 3 Botones" onPress={createThreeButtonAlert} />
       <View style={{ height: 10 }} />
-      <Button text="Prompt" onPress={showPrompt} />
+      <Button text="Prompt" onPress={onShowPrompt} />
     </CustomView>
   );
 };

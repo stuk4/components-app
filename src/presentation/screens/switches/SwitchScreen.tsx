@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { CustomView } from "../ui/CustomView";
+import React, { useContext, useState } from "react";
+import { CustomView } from "../../components/ui/CustomView";
 import { Switch } from "react-native";
-import Card from "../ui/Card";
-import { CustomSwitch } from "../ui/CustomSwitch";
-import { Separator } from "../ui/Separator";
+import Card from "../../components/ui/Card";
+import { CustomSwitch } from "../../components/ui/CustomSwitch";
+import { Separator } from "../../components/ui/Separator";
+import { ThemeContext } from "../../context/ThemeContext";
+import { StatusBar } from "expo-status-bar";
 
 export const SwitchScreen = () => {
   //   const [isEnabled, setIsEnabled] = useState(false);
@@ -14,6 +16,7 @@ export const SwitchScreen = () => {
     isHungry: false,
     isHappy: true,
   });
+  const { currentTheme } = useContext(ThemeContext);
   return (
     <CustomView style={{ marginTop: 100, paddingHorizontal: 10 }}>
       <Card>

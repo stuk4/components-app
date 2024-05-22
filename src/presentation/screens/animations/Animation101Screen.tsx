@@ -6,9 +6,10 @@ import {
   Animated,
   Easing,
 } from "react-native";
-import React, { useRef } from "react";
-import { colors } from "../../../config/theme/theme";
+import React, { useContext } from "react";
+
 import { useAnimation } from "../../hooks/useAnimation";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export const Animation101Screen = () => {
   const {
@@ -18,11 +19,15 @@ export const Animation101Screen = () => {
     animatedTop,
     startMovingTopPosition,
   } = useAnimation();
+  const { colors } = useContext(ThemeContext);
   return (
     <View style={styles.container}>
       <Animated.View
         style={[
           styles.purpleBox,
+          {
+            backgroundColor: colors.primary,
+          },
           {
             opacity: animatedOpacity,
             transform: [{ translateY: animatedTop }],
@@ -55,7 +60,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   purpleBox: {
-    backgroundColor: colors.primary,
     width: 150,
     height: 150,
   },

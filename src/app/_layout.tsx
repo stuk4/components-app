@@ -1,17 +1,17 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { PropsWithChildren, useContext, useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/presentation/hooks/useColorScheme";
 import { StatusBar } from "expo-status-bar";
+import {
+  ThemeContext,
+  ThemeProvider,
+} from "../presentation/context/ThemeContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -47,15 +47,25 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <ThemeProvider>
+      <RootLayoutNav />
+    </ThemeProvider>
+  );
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const { isDark } = useContext(ThemeContext);
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
+    <>
+      <Stack
+        screenOptions={{
+          contentStyle: {
+            backgroundColor: isDark ? "#000" : "#fff",
+          },
+        }}
+      >
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen
           name="(animations)/animations-101"
@@ -67,8 +77,33 @@ function RootLayoutNav() {
         />
         <Stack.Screen name="(ui)/switches" options={{ headerShown: false }} />
         <Stack.Screen name="(ui)/alerts" options={{ headerShown: false }} />
+        <Stack.Screen name="(ui)/textinputs" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(layout)/pull-to-refresh"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(layout)/custom-section-list"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(layout)/modal"
+          options={{
+            presentation: "modal",
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(layout)/infinite-scroll"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="(layout)/slides" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(layout)/change-theme"
+          options={{ headerShown: false }}
+        />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      <StatusBar style={isDark ? "light" : "dark"} />
+    </>
   );
 }

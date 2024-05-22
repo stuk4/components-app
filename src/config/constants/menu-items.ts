@@ -19,32 +19,32 @@ export const menuItems: MenuItem[] = [
   {
     name: "Pull to refresh",
     icon: "refresh-outline",
-    component: "PullToRefreshScreen",
+    component: "/(layout)/pull-to-refresh",
   },
   {
     name: "Section List",
     icon: "list-outline",
-    component: "CustomSectionListScreen",
+    component: "/(layout)/custom-section-list",
   },
   {
     name: "Modal",
     icon: "copy-outline",
-    component: "ModalScreen",
+    component: "/(layout)/modal",
   },
   {
     name: "InfiniteScroll",
     icon: "download-outline",
-    component: "InfiniteScrollScreen",
+    component: "/(layout)/infinite-scroll",
   },
   {
     name: "Slides",
     icon: "flower-outline",
-    component: "SlidesScreen",
+    component: "/(layout)/slides",
   },
   {
     name: "Themes",
     icon: "flask-outline",
-    component: "ChangeThemeScreen",
+    component: "/(layout)/change-theme",
   },
 ];
 export const uiMenuItems: MenuItem[] = [
@@ -62,7 +62,7 @@ export const uiMenuItems: MenuItem[] = [
   {
     name: "TextInputs",
     icon: "document-text-outline",
-    component: "TextInputScreen",
+    component: "/(ui)/textinputs",
   },
 ];
 interface MenuItem {
